@@ -43,14 +43,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lvthong312/react-native-ui-kit.git"
+    "url": "git+https://github.com/lvthong312/react-native-fast-ui-kit.git"
   },
   "author": "Thong Luong <lvthong312@gmail.com> (https://github.com/lvthong312)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lvthong312/react-native-ui-kit/issues"
+    "url": "https://github.com/lvthong312/react-native-fast-ui-kit/issues"
   },
-  "homepage": "https://github.com/lvthong312/react-native-ui-kit#readme",
+  "homepage": "https://github.com/lvthong312/react-native-fast-ui-kit#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
