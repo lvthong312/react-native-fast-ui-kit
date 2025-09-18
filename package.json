@@ -1,6 +1,6 @@
 {
-  "name": "react-native-ui-kit",
-  "version": "0.1.0",
+  "name": "react-native-fast-ui-kit",
+  "version": "0.7.0",
   "description": "Make UI Kit",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -32,13 +32,9 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-ui-kit-example",
-    "test": "jest",
-    "typecheck": "tsc",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "build": "bob build",
     "clean": "del-cli lib",
-    "prepare": "bob build",
-    "release": "release-it --only-version"
+    "public": "npm publish --access public"
   },
   "keywords": [
     "react-native",
@@ -68,6 +64,7 @@
     "@react-native/eslint-config": "^0.81.1",
     "@release-it/conventional-changelog": "^10.0.1",
     "@types/jest": "^29.5.14",
+    "@types/lodash": "^4.17.20",
     "@types/react": "^19.1.12",
     "commitlint": "^19.8.1",
     "del-cli": "^6.0.0",
@@ -83,6 +80,9 @@
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
+    "@types/lodash": "4.17.20",
+    "dayjs": "^1.11.0",
+    "lodash": "^4.17.21",
     "react": "*",
     "react-native": "*"
   },
@@ -150,5 +150,8 @@
     "languages": "js",
     "type": "library",
     "version": "0.54.3"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.0"
   }
 }

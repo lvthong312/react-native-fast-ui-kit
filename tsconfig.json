@@ -25,6 +25,8 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "declaration": true,           // tạo .d.ts
+    "outDir": "lib",               // build ra lib/
   }
 }
