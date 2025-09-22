@@ -1,5 +1,6 @@
+// dayjs setup
 import dayjs from 'dayjs';
-import 'dayjs/locale/vi'; // import locale tiếng Việt
+import 'dayjs/locale/vi';
 import duration from 'dayjs/plugin/duration';
 import isBetween from 'dayjs/plugin/isBetween';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
@@ -11,6 +12,7 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import weekday from 'dayjs/plugin/weekday';
+
 // enable plugins
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
@@ -24,17 +26,30 @@ dayjs.extend(weekday);
 dayjs.extend(weekOfYear);
 dayjs.extend(localeData);
 
-// set default locale
-dayjs.locale('vi');
+export { dayjs };
 
-// set default timezone (nếu muốn)
-dayjs.tz.setDefault('Asia/Ho_Chi_Minh');
-import Divider from './atoms/Devider';
-import MonthCalendar from './molecules/calendars/month-calendar';
-import WeekCalendar from './molecules/calendars/week-calendar';
-import {
+// Atoms
+export { default as Text } from './atoms/Text';
+export { default as Button } from './atoms/Button';
+export { default as Input } from './atoms/Input';
+export { default as Divider } from './atoms/Divider';
+export { default as Avatar } from './atoms/Avatar';
+export { default as Badge } from './atoms/Badge';
+export { default as Card } from './atoms/Card';
+// export { default as Checkbox } from './atoms/CheckBox';
+export { default as RadioButton } from './atoms/RadioButton';
+export { default as Switch } from './atoms/Switch';
+export { default as AvatarGroup } from './molecules/AvatarGroup';
+export { default as AvatarWithOverlay } from './molecules/AvatarOverlay';
+// Calendar
+export { default as MonthCalendar } from './molecules/calendars/MonthCalendar';
+export { default as WeekCalendar } from './molecules/calendars/WeekCalendar';
+export { default as SearchBar } from './molecules/SearchBar';
+
+export {
   CalendarProvider,
   useCalendar,
-} from './molecules/calendars/calendar-provider';
+} from './molecules/calendars/CalendarProvider';
 
-export { Divider, MonthCalendar, WeekCalendar, CalendarProvider, useCalendar };
+export { default as Ticket } from './molecules/Ticket';
+export { Dropdown } from './molecules/Dropdown';

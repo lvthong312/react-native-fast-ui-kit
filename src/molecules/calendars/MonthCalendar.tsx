@@ -13,7 +13,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Divider from '../../atoms/Devider';
+import Divider from '../../atoms/Divider';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 // const DAY_ITEM_WIDTH = SCREEN_WIDTH / 7;

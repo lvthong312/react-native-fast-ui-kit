@@ -10,7 +10,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-dayjs.locale('vi');
 interface Item {
   date: string;
   label: string;

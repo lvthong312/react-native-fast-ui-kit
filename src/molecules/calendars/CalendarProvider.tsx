@@ -15,8 +15,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import MonthCalendar from './month-calendar';
-import type { IMonthCalendar } from './month-calendar';
+import MonthCalendar from './MonthCalendar';
+import type { IMonthCalendar } from './MonthCalendar';
 import type { ViewStyle } from 'react-native';
 type ModalOptions = {
   transparent?: boolean;

@@ -1,5 +1,5 @@
 {
-  "name": "react-native-ui-kit-example",
+  "name": "react-native-fast-ui-kit-example",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@expo/metro-runtime": "~6.1.2",
+    "dayjs": "^1.11.18",
     "expo": "~54.0.7",
     "expo-status-bar": "~3.0.8",
+    "lodash": "^4.17.21",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.4",
