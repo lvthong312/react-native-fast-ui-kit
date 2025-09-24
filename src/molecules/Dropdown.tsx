@@ -32,6 +32,9 @@ export interface DropdownProps {
   itemStyle?: StyleProp<ViewStyle>;
   headerTextStyle?: StyleProp<TextStyle>;
   itemTextStyle?: StyleProp<TextStyle>;
+  labelTextStyle?: StyleProp<TextStyle>;
+  labelStyle?: StyleProp<ViewStyle>;
+  label?: string;
 }
 
 export const Dropdown = ({
@@ -46,6 +49,9 @@ export const Dropdown = ({
   selectedItemStyle,
   itemStyle,
   itemTextStyle,
+  labelTextStyle,
+  labelStyle,
+  label,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const animation = useRef(new Animated.Value(0)).current;
@@ -86,6 +92,28 @@ export const Dropdown = ({
         ]}
         onPress={() => setIsOpen(!isOpen)}
       >
+        {typeof label === 'string' ? (
+          <View
+            style={[
+              {
+                position: 'absolute',
+                top: -10,
+                backgroundColor: 'white',
+                left: 10,
+                paddingVertical: 2,
+                paddingHorizontal: 4,
+                borderRadius: 4,
+                alignItems: 'center',
+                justifyContent: 'center',
+              },
+              labelStyle,
+            ]}
+          >
+            <Text style={[labelTextStyle]}>{label}</Text>
+          </View>
+        ) : (
+          label
+        )}
         <Text style={[styles.headerText, headerTextStyle]}>
           {selectedValue ? selectedValue.label : placeholder}
         </Text>

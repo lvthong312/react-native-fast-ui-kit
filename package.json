@@ -1,6 +1,6 @@
 {
   "name": "react-native-fast-ui-kit",
-  "version": "0.9.0",
+  "version": "0.13.0",
   "description": "Make UI Kit",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
