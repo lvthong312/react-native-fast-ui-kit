@@ -1,124 +1,155 @@
 import React from 'react';
-import type {
-    StyleProp,
-    TextStyle,
-    TouchableOpacityProps,
-    ViewStyle,
-} from 'react-native';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { colors, radius, spacing } from '../theme';
+import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
+import { FastUIKit } from '../FastUIKit';
 import Text from './Text';
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'disabled';
+type ButtonType = 'primary' | 'secondary' | 'outline' | 'disabled' | 'clear';
 
-interface ButtonProps extends TouchableOpacityProps {
+export interface ButtonProps {
   title: string;
-  variant?: ButtonVariant;
+  type?: ButtonType;
   style?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>;
-  icon?: React.ReactNode; // icon component
-  iconPosition?: 'left' | 'right';
+  titleStyle?: StyleProp<TextStyle>;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
   onPress?: () => void;
+  backgroundColor?: string;
+  titleColor?: string;
+  disabled?: boolean;
+  loading?: boolean;
+  gap?: number;
 }
+
+const baseButton: ViewStyle = {
+  minHeight: 44,
+  paddingHorizontal: 16,
+  borderRadius: 12,
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'row',
+};
+
+// 🎨 UI config cho từng type
+const STYLES: Record<ButtonType, { button: ViewStyle; title: TextStyle }> = {
+  primary: {
+    button: {
+      ...baseButton,
+      backgroundColor: '#2563EB', // blue-600
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.15,
+      shadowRadius: 4,
+      elevation: 2,
+    },
+    title: {
+      fontSize: 15,
+      fontWeight: '600',
+      color: '#FFFFFF',
+    },
+  },
+  secondary: {
+    button: {
+      ...baseButton,
+      backgroundColor: '#6B7280', // gray-500
+    },
+    title: {
+      fontSize: 15,
+      fontWeight: '600',
+      color: '#FFFFFF',
+    },
+  },
+  outline: {
+    button: {
+      ...baseButton,
+      backgroundColor: 'transparent',
+      borderWidth: 1,
+      borderColor: '#D1D5DB', // gray-300
+    },
+    title: {
+      fontSize: 15,
+      fontWeight: '600',
+      color: '#111827', // gray-900
+    },
+  },
+  disabled: {
+    button: {
+      ...baseButton,
+      backgroundColor: '#E5E7EB', // gray-200
+    },
+    title: {
+      fontSize: 15,
+      fontWeight: '600',
+      color: '#9CA3AF', // gray-400
+    },
+  },
+  clear: {
+    button: {
+      ...baseButton,
+      backgroundColor: 'transparent',
+      elevation: 0,
+      shadowOpacity: 0,
+    },
+    title: {
+      fontSize: 15,
+      fontWeight: '600',
+      color: '#2563EB', // blue-600
+    },
+  },
+};
 
 const Button = ({
   title,
-  variant = 'primary',
+  type = 'primary',
   style,
-  textStyle,
-  icon,
-  iconPosition = 'left',
+  titleStyle,
+  leftIcon,
+  rightIcon,
+  backgroundColor,
+  titleColor,
   onPress,
-  ...props
+  disabled,
+  loading,
+  gap,
 }: ButtonProps) => {
-  const getBackgroundColor = () => {
-    switch (variant) {
-      case 'primary':
-        return colors.primary;
-      case 'secondary':
-        return colors.secondary;
-      case 'outline':
-      case 'disabled':
-        return colors.white;
-      default:
-        return colors.primary;
-    }
-  };
-
-  const getTextColor = () => {
-    switch (variant) {
-      case 'primary':
-      case 'secondary':
-        return colors.white;
-      case 'outline':
-        return colors.primary;
-      case 'disabled':
-        return colors.placeholder;
-      default:
-        return colors.white;
-    }
-  };
-
-  const getBorder = () => {
-    switch (variant) {
-      case 'outline':
-        return { borderWidth: 1, borderColor: colors.primary };
-      case 'disabled':
-        return { borderWidth: 1, borderColor: colors.placeholder };
-      default:
-        return {};
-    }
-  };
-
+  const config = STYLES[type];
   return (
     <TouchableOpacity
       style={[
-        styles.button,
-        { backgroundColor: getBackgroundColor() },
-        getBorder(),
+        config.button,
+        FastUIKit?.defaultStyle?.button?.style,
+        backgroundColor && { backgroundColor },
+        disabled && STYLES.disabled.button,
         style,
-        variant === 'disabled' && { opacity: 0.6 },
       ]}
-      onPress={variant === 'disabled' ? undefined : onPress}
+      onPress={disabled ? undefined : onPress}
       activeOpacity={0.8}
-      {...props}
+      disabled={disabled || loading}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        {icon && iconPosition === 'left' && (
-          <View style={{ marginRight: spacing.sm }}>{icon}</View>
-        )}
-        <Text
-          style={[styles.buttonText, textStyle]}
-          color={getTextColor()}
-          weight="bold"
-        >
-          {title}
-        </Text>
-        {icon && iconPosition === 'right' && (
-          <View style={{ marginLeft: spacing.sm }}>{icon}</View>
-        )}
-      </View>
+      {loading ? (
+        <ActivityIndicator color={config.title.color} />
+      ) : (
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap }}>
+          {leftIcon}
+          <Text
+            style={[
+              FastUIKit?.defaultStyle?.button?.titleStyle,
+              config.title,
+              titleStyle,
+            ]}
+            weight="bold"
+            color={
+              titleColor ||
+              (disabled ? STYLES.disabled.title.color : config.title.color)
+            }
+          >
+            {title}
+          </Text>
+          {rightIcon}
+        </View>
+      )}
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  button: {
-    paddingVertical: spacing.sm + 4,
-    paddingHorizontal: spacing.lg,
-    borderRadius: radius.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: spacing.sm,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  buttonText: {
-    fontSize: 16,
-  },
-});
 
 export default Button;

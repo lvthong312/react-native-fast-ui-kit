@@ -1,13 +1,13 @@
 // components/Input.tsx
 import React, { useState } from 'react';
 import {
-  View,
+  StyleSheet,
   Text,
   TextInput,
-  StyleSheet,
-  type TextInputProps,
-  Image,
+  View,
+  type TextInputProps
 } from 'react-native';
+import { ImageBase } from '../shared/images/ImageBase';
 
 interface InputProps extends TextInputProps {
   label?: string;
@@ -72,27 +72,18 @@ const Input: React.FC<InputProps> = ({
         <View style={{ flex: 1 }}>
           {helpMessage && !hasError && (
             <View style={styles.messageRow}>
-              <Image
-                source={require('../images/ic_info_fill.png')}
-                style={{
-                  width: 14,
-                  height: 14,
-                  tintColor: '#007BFF',
-                }}
-              />
+              <ImageBase name="ic_info_fill" size={14} color="#007BFF" />
               <Text style={styles.helpMessage}>{helpMessage}</Text>
             </View>
           )}
           {hasError && (
             <View style={styles.messageRow}>
-              <Image
-                source={require('../images/ic_alert_triangle_fill.png')}
-                style={{
-                  width: 14,
-                  height: 14,
-                  tintColor: '#D32F2F',
-                }}
+              <ImageBase
+                name="ic_alert_triangle_fill"
+                size={14}
+                color="#D32F2F"
               />
+
               <Text style={styles.errorMessage}>{errorMessage}</Text>
             </View>
           )}

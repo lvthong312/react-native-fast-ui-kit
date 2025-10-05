@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import {
+  Alert,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   View,
-  ScrollView,
-  Alert,
 } from 'react-native';
 import {
   Avatar,
@@ -13,8 +13,11 @@ import {
   Badge,
   Button,
   Card,
+  CheckBox,
   Divider,
   Dropdown,
+  FastUIKit,
+  GoogleButton,
   Input,
   MonthCalendar,
   RadioButton,
@@ -24,7 +27,19 @@ import {
   Ticket,
   WeekCalendar,
 } from '../../src/index';
-
+FastUIKit.init({
+  defaultStyle: {
+    text: {
+      style: {
+        fontFamily: 'YOUR_FONT',
+      },
+    },
+    button: {
+      style: {},
+      titleStyle: {},
+    },
+  },
+});
 export default function App() {
   const [selected, setSelected] = useState(false);
   const [switchOn, setSwitchOn] = useState(true);
@@ -35,7 +50,7 @@ export default function App() {
 
   const renderSection = (title: string, children: React.ReactNode) => (
     <View style={styles.section}>
-      <Text variant="subtitle" style={styles.sectionTitle}>
+      <Text type="subtitle" style={styles.sectionTitle}>
         {title}
       </Text>
       {children}
@@ -45,6 +60,12 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        {renderSection(
+          'CheckBox:',
+          <>
+            <CheckBox label="Default" />
+          </>
+        )}
         {renderSection(
           'Dropdown:',
           <Dropdown
@@ -64,16 +85,16 @@ export default function App() {
 
         {renderSection(
           'Ticket:',
-          <View
+          <Card
             style={{
-              backgroundColor: 'blue',
               padding: 12,
               alignItems: 'center',
+              backgroundColor: 'blue',
             }}
           >
             <Ticket
               header={
-                <View>
+                <View style={{ padding: 8 }}>
                   <Text
                     style={{ color: 'black', fontWeight: 'bold', fontSize: 18 }}
                   >
@@ -92,7 +113,7 @@ export default function App() {
               dividerColor="#919EAB" // white dashed line
               containerStyle={{ width: 320, height: 300, borderRadius: 12 }} // override base style
             />
-          </View>
+          </Card>
         )}
         {/* SearchBar Example */}
 
@@ -124,10 +145,10 @@ export default function App() {
         {renderSection(
           'Text Variants:',
           <>
-            <Text variant="heading">Heading Text</Text>
-            <Text variant="subtitle">Subtitle Text</Text>
-            <Text variant="body">Body Text</Text>
-            <Text variant="caption">Caption Text</Text>
+            <Text type="heading">Heading Text</Text>
+            <Text type="title">Subtitle Text</Text>
+            <Text type="normal">Normal Text</Text>
+            <Text type="subtitle">Subtitle Text</Text>
           </>
         )}
 
@@ -150,12 +171,16 @@ export default function App() {
           <>
             <Button
               title="Primary"
-              variant="primary"
+              type="primary"
               onPress={() => Alert.alert('Primary clicked')}
             />
-            <Button title="Secondary" variant="secondary" />
-            <Button title="Outline" variant="outline" />
-            <Button title="Disabled" variant="disabled" />
+            <Button title="Secondary" type="secondary" />
+            <Button title="Outline" type="outline" />
+            <Button title="Disabled" type="disabled" />
+            <Button title="Clear" type="clear" />
+            <Button title="Button" loading />
+
+            <GoogleButton onPress={() => {}} title={''} />
           </>
         )}
 
@@ -165,6 +190,7 @@ export default function App() {
             <RadioButton
               selected={selected}
               onPress={() => setSelected(!selected)}
+              gap={10}
             />
             <Switch value={switchOn} onValueChange={setSwitchOn} />
           </View>
@@ -213,7 +239,7 @@ export default function App() {
             <Text>Card Content Example</Text>
             <Button
               title="Open Modal"
-              variant="primary"
+              type="primary"
               onPress={() => Alert.alert('Open Modal clicked')}
             />
           </Card>

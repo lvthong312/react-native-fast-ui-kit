@@ -1,6 +1,6 @@
 {
   "name": "react-native-fast-ui-kit",
-  "version": "0.13.0",
+  "version": "0.23.0",
   "description": "Make UI Kit",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -34,7 +34,12 @@
   "scripts": {
     "build": "bob build",
     "clean": "del-cli lib",
-    "public": "npm publish --access public"
+    "public": "npm publish --access public",
+    "gen:svgs": "npx react-native-fast-scripts gen:svgs --dir './src/shared/svgs'",
+    "gen:images": "npx react-native-fast-scripts gen:images --dir './src/shared/images'",
+    "gen:errors": "npx react-native-fast-scripts gen:errors --dir './src/shared/errors'",
+    "gen:storage": "npx react-native-fast-scripts gen:storage --asyncstorage --dir './src/shared/storages'",
+    "gen:theme": "npx react-native-fast-scripts gen:theme --light --dark --dir './src/shared/themes'"
   },
   "keywords": [
     "react-native",
@@ -80,9 +85,9 @@
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
-    "@types/lodash": "4.17.20",
-    "dayjs": "^1.11.0",
-    "lodash": "^4.17.21",
+    "@types/lodash": "*",
+    "dayjs": "*",
+    "lodash": "*",
     "react": "*",
     "react-native": "*"
   },
@@ -152,6 +157,7 @@
     "version": "0.54.3"
   },
   "dependencies": {
-    "dayjs": "^1.11.0"
+    "dayjs": "^1.11.0",
+    "react-native-fast-scripts": "^0.0.8"
   }
 }

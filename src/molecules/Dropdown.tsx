@@ -3,15 +3,15 @@ import {
   Animated,
   Easing,
   FlatList,
-  Image,
   Pressable,
   type StyleProp,
   StyleSheet,
   Text,
   type TextStyle,
   View,
-  type ViewStyle,
+  type ViewStyle
 } from 'react-native';
+import { ImageBase } from '../shared/images/ImageBase';
 
 // Interface for each dropdown option
 export interface DropdownOption {
@@ -117,17 +117,10 @@ export const Dropdown = ({
         <Text style={[styles.headerText, headerTextStyle]}>
           {selectedValue ? selectedValue.label : placeholder}
         </Text>
-        <Image
-          source={
-            isOpen
-              ? require('../images/ic_up_arrow.png')
-              : require('../images/ic_down_arrow.png')
-          }
-          style={{
-            width: 20,
-            height: 20,
-            tintColor: '#555',
-          }}
+        <ImageBase
+          name={isOpen ? 'ic_up_arrow' : 'ic_down_arrow'}
+          size={20}
+          color="#555"
         />
       </Pressable>
 

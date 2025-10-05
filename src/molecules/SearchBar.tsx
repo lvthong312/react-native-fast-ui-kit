@@ -1,15 +1,15 @@
 import React, { useRef, useState } from 'react';
+import type { ViewStyle } from 'react-native';
 import {
   Animated,
   Dimensions,
-  Image,
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import type { ViewStyle } from 'react-native';
 import Text from '../atoms/Text';
+import { ImageBase } from '../shared/images/ImageBase';
 interface IProps {
   leftComponent?: React.ReactNode | string;
   hideSearch?: boolean;
@@ -100,14 +100,7 @@ const SearchBar: React.FC<IProps> = ({
       <View style={styles.leftWrapper}>
         {showBackButton && !isSearching && (
           <TouchableOpacity onPress={onPressBack}>
-            <Image
-              source={require('../images/ic_arrow_left.png')}
-              style={{
-                tintColor: 'black',
-                width: iconSize,
-                height: iconSize,
-              }}
-            />
+            <ImageBase name="ic_arrow_left" size={iconSize} color="black" />
           </TouchableOpacity>
         )}
         {renderLeftComponent()}
@@ -116,14 +109,7 @@ const SearchBar: React.FC<IProps> = ({
       <View style={styles.rightWrapper}>
         {!isSearching && !hideSearch && (
           <TouchableOpacity style={styles.button} onPress={startSearch}>
-            <Image
-              source={require('../images/ic_search.png')}
-              style={{
-                width: iconSize,
-                height: iconSize,
-                tintColor: 'black',
-              }}
-            />
+            <ImageBase name="ic_search" size={iconSize} color="black" />
           </TouchableOpacity>
         )}
       </View>

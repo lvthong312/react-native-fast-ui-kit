@@ -2,10 +2,9 @@ import {
   Text as RNText,
   StyleSheet,
   View,
-  type ViewStyle,
   type TextStyle,
+  type ViewStyle,
 } from 'react-native';
-import { colors, radius, spacing } from '../theme';
 
 interface BadgeProps {
   text: string | number;
@@ -18,9 +17,9 @@ interface BadgeProps {
 
 const Badge = ({
   text,
-  color = colors.primary,
-  textColor = colors.white,
-  borderRadius = radius.lg,
+  color = '#007AFF',
+  textColor = 'white',
+  borderRadius = 12,
   style,
   textStyle,
 }: BadgeProps) => {
@@ -41,8 +40,8 @@ const Badge = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
     alignItems: 'center',
     justifyContent: 'center',
   },

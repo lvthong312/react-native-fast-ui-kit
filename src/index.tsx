@@ -36,9 +36,11 @@ export { default as Divider } from './atoms/Divider';
 export { default as Avatar } from './atoms/Avatar';
 export { default as Badge } from './atoms/Badge';
 export { default as Card } from './atoms/Card';
-// export { default as Checkbox } from './atoms/CheckBox';
+
+export { default as CheckBox } from './atoms/CheckBox';
 export { default as RadioButton } from './atoms/RadioButton';
 export { default as Switch } from './atoms/Switch';
+
 export { default as AvatarGroup } from './molecules/AvatarGroup';
 export { default as AvatarWithOverlay } from './molecules/AvatarOverlay';
 // Calendar
@@ -53,3 +55,6 @@ export {
 
 export { default as Ticket } from './molecules/Ticket';
 export { Dropdown } from './molecules/Dropdown';
+
+export { FastUIKit } from './FastUIKit';
+export { default as GoogleButton } from './molecules/GoogleButton';

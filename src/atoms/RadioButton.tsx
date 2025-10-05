@@ -1,61 +1,30 @@
-import type { StyleProp, ViewStyle } from 'react-native';
-import {
-  ActivityIndicator,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { colors, spacing } from '../theme';
-
-interface RadioButtonProps {
+import { ImageBase } from '../shared/images/ImageBase';
+import CheckBox, { type CheckBoxProps } from './CheckBox';
+interface RadioButtonProps extends CheckBoxProps {
   selected: boolean;
   onPress?: () => void;
-  disabled?: boolean;
-  loading?: boolean;
-  style?: StyleProp<ViewStyle>;
+  checkedColor?: string;
+  unCheckedColor?: string;
 }
 
 const RadioButton = ({
   selected,
   onPress,
-  disabled,
-  loading,
-  style,
+  checkedColor = 'blue',
+  unCheckedColor = 'blue',
+  ...rest
 }: RadioButtonProps) => {
   return (
-    <TouchableOpacity
-      style={[styles.container, style, disabled && { opacity: 0.5 }]}
-      onPress={disabled ? undefined : onPress}
-      activeOpacity={0.8}
-    >
-      <View style={styles.outer}>
-        {loading ? (
-          <ActivityIndicator size="small" color={colors.primary} />
-        ) : selected ? (
-          <View style={styles.inner} />
-        ) : null}
-      </View>
-    </TouchableOpacity>
+    <CheckBox
+      checked={selected}
+      onPress={onPress}
+      checkedIcon={<ImageBase name="ic_radio" size={24} color={checkedColor} />}
+      uncheckedIcon={
+        <ImageBase name="ic_unradio" size={24} color={unCheckedColor} />
+      }
+      {...rest}
+    />
   );
 };
-
-const styles = StyleSheet.create({
-  container: { marginVertical: spacing.sm },
-  outer: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: colors.placeholder,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inner: {
-    width: 14,
-    height: 14,
-    borderRadius: 14,
-    backgroundColor: colors.primary,
-  },
-});
 
 export default RadioButton;
