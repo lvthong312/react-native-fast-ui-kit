@@ -1,16 +1,21 @@
 import React from 'react';
-import type { StyleProp, TextStyle } from 'react-native';
+import type {
+  StyleProp,
+  TextProps as RNTextProps,
+  TextStyle,
+} from 'react-native';
 import { Text as RNText } from 'react-native';
 import { FastUIKit } from '../FastUIKit';
 
 type Type = 'heading' | 'title' | 'subtitle' | 'normal';
 
-interface TextProps {
+interface TextProps extends RNTextProps {
   children: React.ReactNode;
   style?: StyleProp<TextStyle>;
   color?: string | any;
   type?: Type;
   weight?: 'normal' | 'bold' | '600' | '500';
+  numberOfLines?: number;
 }
 
 const Text = ({
@@ -19,6 +24,7 @@ const Text = ({
   color,
   type = 'normal',
   weight,
+  ...rest
 }: TextProps) => {
   const getVariantStyle = (): TextStyle => {
     switch (type) {
@@ -54,6 +60,7 @@ const Text = ({
   return (
     <RNText
       style={[FastUIKit?.defaultStyle?.text?.style, getVariantStyle(), style]}
+      {...rest}
     >
       {children}
     </RNText>

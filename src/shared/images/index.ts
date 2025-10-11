@@ -3,6 +3,7 @@
 
 export const images = {
   ic_alert_triangle_fill: require('./ic_alert_triangle_fill.png'),
+  ic_apple_logo: require('./ic_apple_logo.png'),
   ic_arrow_left: require('./ic_arrow_left.png'),
   ic_checkbox: require('./ic_checkbox.png'),
   ic_down_arrow: require('./ic_down_arrow.png'),

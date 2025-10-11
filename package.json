@@ -1,6 +1,6 @@
 {
   "name": "react-native-fast-ui-kit",
-  "version": "0.23.0",
+  "version": "0.37.0",
   "description": "Make UI Kit",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -158,6 +158,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.0",
-    "react-native-fast-scripts": "^0.0.8"
+    "react-native-fast-scripts": "^0.23.0",
+    "react-native-fast-size-matters": "^0.3.0"
   }
 }

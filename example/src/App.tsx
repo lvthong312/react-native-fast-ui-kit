@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Alert,
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  View,
+  View
 } from 'react-native';
 import {
+  AnimatedAppHeader,
+  AppHeader,
   Avatar,
   AvatarGroup,
   AvatarWithOverlay,
@@ -20,12 +22,14 @@ import {
   GoogleButton,
   Input,
   MonthCalendar,
+  ProgressBar,
   RadioButton,
   SearchBar,
   Switch,
   Text,
   Ticket,
   WeekCalendar,
+  type AnimatedAppHeaderRef
 } from '../../src/index';
 FastUIKit.init({
   defaultStyle: {
@@ -56,10 +60,46 @@ export default function App() {
       {children}
     </View>
   );
-
+  const animatedAppHeaderRef = useRef<AnimatedAppHeaderRef>(null);
+  // return (
+  //   <LoadingScreen
+  //     Logo={
+  //       <ImageBase
+  //         name='ic_checkbox'
+  //         size={80}
+  //         style={{ marginBottom: 20 }}
+  //       />
+  //     }
+  //   />
+  // );
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <AnimatedAppHeader
+        ref={animatedAppHeaderRef}
+        onPressLeft={() => {}}
+        title="Danh sách khóa học"
+        topInsets={80}
+      />
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        onScroll={animatedAppHeaderRef.current?.onScroll}
+      >
+        {renderSection(
+          'ProgressBar:',
+          <>
+            <ProgressBar progress={0.3} height={4} fillColor="#4CAF50" />
+          </>
+        )}
+        {renderSection(
+          'Header:',
+          <>
+            <AppHeader
+              onBackPress={() => {}}
+              title="Header"
+              rightText="right"
+            />
+          </>
+        )}
         {renderSection(
           'CheckBox:',
           <>
@@ -199,7 +239,7 @@ export default function App() {
         {renderSection(
           'Avatar / Badge:',
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
-            <Avatar size={50} source={{ uri: '' }} displayShortName="AB" />
+            <Avatar size={50} source={{ uri: '' }} fullName="Good Morning" />
             <Badge text="New" />
           </View>
         )}

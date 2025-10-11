@@ -22,7 +22,7 @@ export class FastUIKit {
             titleStyle: {}
         },
     };
-    static init({ defaultStyle }: IFastUIKit) {
-        this.defaultStyle = defaultStyle;
+    static init(props: IFastUIKit) {
+        this.defaultStyle = props?.defaultStyle;
     }
 }

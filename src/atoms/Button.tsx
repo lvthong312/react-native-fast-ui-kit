@@ -7,7 +7,7 @@ import Text from './Text';
 type ButtonType = 'primary' | 'secondary' | 'outline' | 'disabled' | 'clear';
 
 export interface ButtonProps {
-  title: string;
+  title?: string;
   type?: ButtonType;
   style?: StyleProp<ViewStyle>;
   titleStyle?: StyleProp<TextStyle>;
@@ -19,6 +19,10 @@ export interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   gap?: number;
+  shadow?: boolean;
+  clear?: boolean;
+  activityIndicatorColor?: string;
+  activityIndicatorSize?: 'small' | 'large';
 }
 
 const baseButton: ViewStyle = {
@@ -36,11 +40,11 @@ const STYLES: Record<ButtonType, { button: ViewStyle; title: TextStyle }> = {
     button: {
       ...baseButton,
       backgroundColor: '#2563EB', // blue-600
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.15,
-      shadowRadius: 4,
-      elevation: 2,
+      // shadowColor: '#000',
+      // shadowOffset: { width: 0, height: 2 },
+      // shadowOpacity: 0.15,
+      // shadowRadius: 4,
+      // elevation: 2,
     },
     title: {
       fontSize: 15,
@@ -111,6 +115,9 @@ const Button = ({
   disabled,
   loading,
   gap,
+  clear,
+  activityIndicatorSize = 'small',
+  activityIndicatorColor,
 }: ButtonProps) => {
   const config = STYLES[type];
   return (
@@ -120,6 +127,7 @@ const Button = ({
         FastUIKit?.defaultStyle?.button?.style,
         backgroundColor && { backgroundColor },
         disabled && STYLES.disabled.button,
+        clear && { minHeight: 'auto', paddingHorizontal: 0 },
         style,
       ]}
       onPress={disabled ? undefined : onPress}
@@ -127,7 +135,10 @@ const Button = ({
       disabled={disabled || loading}
     >
       {loading ? (
-        <ActivityIndicator color={config.title.color} />
+        <ActivityIndicator
+          color={activityIndicatorColor || config.title.color}
+          size={activityIndicatorSize}
+        />
       ) : (
         <View style={{ flexDirection: 'row', alignItems: 'center', gap }}>
           {leftIcon}

@@ -28,8 +28,11 @@ export const ImageBase: React.FC<
   return (
     <Image
       source={uri ? { uri } : images[name!]}
-      style={{ width: size || width, height: size || height, tintColor: color }}
       {...rest}
+      style={[
+        { width: size || width, height: size || height, tintColor: color },
+        rest?.style,
+      ]}
     />
   );
 };
