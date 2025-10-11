@@ -13,9 +13,9 @@ A fast and customizable **UI Kit for React Native** including ready-to-use compo
 ## 🚀 Installation
 
 ```bash
-yarn add react-native-fast-ui-kit
+yarn add react-native-fast-ui-kit react-native-fast-size-matters dayjs
 # or
-npm install react-native-fast-ui-kit
+npm install react-native-fast-ui-kit react-native-fast-size-matters dayjs
 ```
 ```tsx
 import React, { useRef, useState } from 'react';

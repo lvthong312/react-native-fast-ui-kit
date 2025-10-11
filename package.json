@@ -72,6 +72,7 @@
     "@types/lodash": "^4.17.20",
     "@types/react": "^19.1.12",
     "commitlint": "^19.8.1",
+    "dayjs": "^1.11.18",
     "del-cli": "^6.0.0",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
@@ -81,6 +82,8 @@
     "react": "19.1.0",
     "react-native": "0.81.4",
     "react-native-builder-bob": "^0.40.13",
+    "react-native-fast-scripts": "^0.23.0",
+    "react-native-fast-size-matters": "^0.6.0",
     "release-it": "^19.0.4",
     "typescript": "^5.9.2"
   },
@@ -89,7 +92,8 @@
     "dayjs": "*",
     "lodash": "*",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-fast-size-matters": "*"
   },
   "workspaces": [
     "example"
@@ -155,10 +159,5 @@
     "languages": "js",
     "type": "library",
     "version": "0.54.3"
-  },
-  "dependencies": {
-    "dayjs": "^1.11.0",
-    "react-native-fast-scripts": "^0.23.0",
-    "react-native-fast-size-matters": "^0.3.0"
   }
 }
