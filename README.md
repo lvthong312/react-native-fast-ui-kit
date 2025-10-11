@@ -16,8 +16,8 @@ A fast and customizable **UI Kit for React Native** including ready-to-use compo
 yarn add react-native-fast-ui-kit
 # or
 npm install react-native-fast-ui-kit
-
-```sh
+```
+```tsx
 import { SafeAreaView, Text } from 'react-native';
 import {
   Divider,
