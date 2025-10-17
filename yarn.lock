@@ -5542,7 +5542,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.11.0, dayjs@npm:^1.11.18":
+"dayjs@npm:^1.11.18":
   version: 1.11.18
   resolution: "dayjs@npm:1.11.18"
   checksum: cc90054bad30ab011417a7a474b2ffa70e7a28ca6f834d7e86fe53a408a40a14c174f26155072628670e9eda4c48c4ed0d847d2edf83d47c0bfb78be15bbf2dd
@@ -11016,13 +11016,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-fast-size-matters@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "react-native-fast-size-matters@npm:0.3.0"
+"react-native-fast-size-matters@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "react-native-fast-size-matters@npm:0.6.0"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 2d96a00f24b12fa02078748ce08d315a09b95c270682e2a4189041544397177690f515fa6bd26c600a32ba6b8adcf65ceaad91a4e75a3b7273c109dcfdc318ca
+  checksum: 8c062ebd4f02989f38c2cb54bb8dc22375ae19e2c0997a5b4c9bb61b9eabb205e5a2fc52a72e847f73c6b9eb3c682c2f78ac2a3bd34963941942c5395e037e1a
   languageName: node
   linkType: hard
 
@@ -11039,6 +11039,7 @@ __metadata:
     react-dom: 19.1.0
     react-native: 0.81.4
     react-native-builder-bob: ^0.40.13
+    react-native-fast-size-matters: ^0.6.0
     react-native-monorepo-config: ^0.1.9
     react-native-web: ~0.21.0
   languageName: unknown
@@ -11060,7 +11061,7 @@ __metadata:
     "@types/lodash": ^4.17.20
     "@types/react": ^19.1.12
     commitlint: ^19.8.1
-    dayjs: ^1.11.0
+    dayjs: ^1.11.18
     del-cli: ^6.0.0
     eslint: ^9.35.0
     eslint-config-prettier: ^10.1.8
@@ -11071,7 +11072,7 @@ __metadata:
     react-native: 0.81.4
     react-native-builder-bob: ^0.40.13
     react-native-fast-scripts: ^0.23.0
-    react-native-fast-size-matters: ^0.3.0
+    react-native-fast-size-matters: ^0.6.0
     release-it: ^19.0.4
     typescript: ^5.9.2
   peerDependencies:
@@ -11080,6 +11081,7 @@ __metadata:
     lodash: "*"
     react: "*"
     react-native: "*"
+    react-native-fast-size-matters: "*"
   languageName: unknown
   linkType: soft
 

@@ -4,7 +4,7 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  View
+  View,
 } from 'react-native';
 import {
   AnimatedAppHeader,
@@ -25,12 +25,13 @@ import {
   ProgressBar,
   RadioButton,
   SearchBar,
+  SearchBarButton,
   Switch,
   Text,
   Ticket,
   WeekCalendar,
   type AnimatedAppHeaderRef
-} from '../../src/index';
+} from 'react-native-fast-ui-kit';
 FastUIKit.init({
   defaultStyle: {
     text: {
@@ -72,6 +73,7 @@ export default function App() {
   //     }
   //   />
   // );
+  // return <TabbarExample />;
   return (
     <SafeAreaView style={styles.container}>
       <AnimatedAppHeader
@@ -84,6 +86,16 @@ export default function App() {
         contentContainerStyle={styles.scrollContent}
         onScroll={animatedAppHeaderRef.current?.onScroll}
       >
+        {renderSection(
+          'SearchBar:',
+          <>
+            <SearchBarButton
+              onPress={function (): void {
+                throw new Error('Function not implemented.');
+              }}
+            />
+          </>
+        )}
         {renderSection(
           'ProgressBar:',
           <>

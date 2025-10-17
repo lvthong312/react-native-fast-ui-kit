@@ -67,3 +67,6 @@ export {
 } from './molecules/AnimatedAppHeader';
 
 export { LoadingScreen, LoadingWrapper } from './template/LoadingScreen';
+export { default as SearchBarButton } from './molecules/SearchBarButton';
+export { default as NotFoundScreen } from './template/NotFoundScreen';
+export { default as Tabbar } from './molecules/Tabbar';

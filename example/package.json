@@ -22,6 +22,7 @@
   "private": true,
   "devDependencies": {
     "react-native-builder-bob": "^0.40.13",
+    "react-native-fast-size-matters": "^0.6.0",
     "react-native-monorepo-config": "^0.1.9"
   }
 }

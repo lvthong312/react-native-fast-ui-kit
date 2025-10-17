@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type { ViewStyle } from 'react-native';
 import {
   Animated,
@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 import Text from '../atoms/Text';
 import { ImageBase } from '../shared/images/ImageBase';
@@ -19,6 +19,8 @@ interface IProps {
   onPressBack?: () => void;
   onChangeTextSearch?: (text: string) => void;
   isSearchAnimation?: boolean; // ✅ NEW PROP
+  defaultSearching?: boolean;
+  onSubmitEditing?: () => void;
 }
 
 const screenWidth = Dimensions.get('window').width;
@@ -32,11 +34,16 @@ const SearchBar: React.FC<IProps> = ({
   onPressBack,
   onChangeTextSearch,
   isSearchAnimation = true,
+  defaultSearching = false,
+  onSubmitEditing = () => {},
 }) => {
   const [isSearching, setIsSearching] = useState(false);
-
   const slideAnim = useRef(new Animated.Value(screenWidth)).current; // start off-screen
-
+  useEffect(() => {
+    if (defaultSearching) {
+      startSearch();
+    }
+  }, [defaultSearching]);
   const startSearch = () => {
     setIsSearching(true);
     if (isSearchAnimation) {
@@ -79,6 +86,7 @@ const SearchBar: React.FC<IProps> = ({
               placeholder="Tìm kiếm..."
               placeholderTextColor="#999"
               autoFocus
+              onSubmitEditing={onSubmitEditing}
             />
             <TouchableOpacity onPress={cancelSearch}>
               <Text style={styles.cancelText}>Huỷ</Text>

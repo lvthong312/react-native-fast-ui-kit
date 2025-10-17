@@ -13,7 +13,8 @@ export const images = {
   ic_search: require('./ic_search.png'),
   ic_unchecked: require('./ic_unchecked.png'),
   ic_unradio: require('./ic_unradio.png'),
-  ic_up_arrow: require('./ic_up_arrow.png')
+  ic_up_arrow: require('./ic_up_arrow.png'),
+  not_found: require('./not_found.png')
 };
 
 export type ImageName = keyof typeof images;
